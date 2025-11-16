@@ -47,7 +47,7 @@ static void seven_seg_thread_entry(void *p1, void *p2, void *p3)
 {
 	display_digits = 0;
 	display_points = 0;
-	k_timer_start(&seven_seg_timer, K_MSEC(10), K_MSEC(10));
+	k_timer_start(&seven_seg_timer, K_NO_WAIT, K_MSEC(10));
 
 	for (;;) {
 		for (int col = 0; col < 4; ++col) {
