@@ -11,8 +11,11 @@ static void cyc_thread_entry(void *p1, void *p2, void *p3)
 {
 	uint16_t d = 0;
 
+	// Wait for other threads to wake up.
+	k_msleep(100);	
+
 	seven_seg_display(d, 0);
-	k_timer_start(&cyc_timer, K_MSEC(100), K_MSEC(5));
+	k_timer_start(&cyc_timer, K_NO_WAIT, K_MSEC(5));
 
 	for (;;) {
 		for (int i = 0; i < 4; ++i) {
